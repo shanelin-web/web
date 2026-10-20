@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>屬於我各的個人網站 | 旅遊・AI品集・蛋仔水電通</title>
+    <!-- Google Fonts: Inter & Noto Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+                    },
+                    colors: {
+                        egg: {
+                            yellow: '#FFD100',
+                            orange: '#FF8A00',
+                            blue: '#00A8E8',
+                            dark: '#1E293B'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 selection:bg-indigo-500 selection:text-white overflow-x-hidden">
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <!-- Brand Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-amber-400 flex items-center justify-center text-white font-black text-xl shadow-md group-hover:scale-105 transition-transform">
+                        我
+                    </div>
+                    <div>
+                        <span class="font-black text-lg md:text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-amber-300">
+                            屬於我各的個人網站
+                        </span>
+                        <span class="hidden sm:inline-block text-xs px-2 py-0.5 ml-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/50 dark:text-amber-300 font-semibold">
+                            斜槓空間
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <a href="#about" class="px-3 py-2 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition">關於我</a>
+                    <a href="#travel" class="px-3 py-2 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-emerald-600 dark:hover:text-emerald-400 transition">
+                        <i class="fa-solid fa-plane-departure mr-1 text-emerald-500"></i>旅遊足跡
+                    </a>
+                    <a href="#ai-portfolio" class="px-3 py-2 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-purple-600 dark:hover:text-purple-400 transition">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-1 text-purple-500"></i>AI 品集
+                    </a>
+                    <a href="#egg-plumbing" class="px-3.5 py-2 rounded-xl text-sm font-bold bg-amber-400/20 text-amber-700 dark:bg-amber-400/10 dark:text-amber-300 hover:bg-amber-400/30 transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-screwdriver-wrench text-amber-500"></i>蛋仔水電通
+                    </a>
+                    <a href="#contact" class="ml-2 px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm shadow-indigo-500/30 transition">
+                        聯絡資訊
+                    </a>
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" aria-label="切換深淺色主題" class="p-2.5 ml-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 transition">
+                        <i id="theme-icon" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Actions -->
+                <div class="flex items-center gap-2 md:hidden">
+                    <button id="theme-toggle-mobile" aria-label="切換深淺色主題" class="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 transition">
+                        <i id="theme-icon-mobile" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+                    <button id="mobile-menu-btn" aria-label="開啟選單" class="p-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-200/70 dark:hover:bg-slate-800 focus:outline-none">
+                        <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pt-3 pb-6 space-y-2 shadow-xl">
+            <a href="#about" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                <i class="fa-solid fa-user-astronaut w-6 text-indigo-500"></i>關於我
+            </a>
+            <a href="#travel" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                <i class="fa-solid fa-earth-asia w-6 text-emerald-500"></i>旅遊足跡
+            </a>
+            <a href="#ai-portfolio" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                <i class="fa-solid fa-microchip w-6 text-purple-500"></i>AI 品集
+            </a>
+            <a href="#egg-plumbing" class="mobile-link block px-4 py-3 rounded-xl text-base font-bold bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 transition">
+                <i class="fa-solid fa-helmet-safety w-6 text-amber-500"></i>蛋仔水電通
+            </a>
+            <a href="#contact" class="mobile-link block px-4 py-3 mt-2 text-center rounded-xl text-base font-bold bg-indigo-600 text-white hover:bg-indigo-700 transition">
+                <i class="fa-solid fa-paper-plane mr-2"></i>聯絡資訊
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+        <!-- Decorative Background Blobs -->
+        <div class="absolute top-12 left-1/2 -translate-x-1/2 w-[90vw] max-w-5xl h-72 bg-gradient-to-tr from-indigo-500/20 via-purple-500/20 to-amber-400/20 blur-3xl -z-10 rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+                <!-- Left Text Column -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 text-xs sm:text-sm font-semibold border border-indigo-200 dark:border-indigo-800">
+                        <span class="w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
+                        歡迎光臨！這是屬於我各的個人網站
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                        探索世界、駕馭 <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-500 dark:from-purple-400 dark:to-indigo-300">AI 創意</span>，<br class="hidden sm:inline">
+                        還能幫你搞定 <span class="underline decoration-amber-400 decoration-wavy decoration-4 underline-offset-8 text-amber-600 dark:text-amber-400">水電大小事</span>！
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        嗨！這裡集結了我最熱愛的三個領域：背起行囊紀錄<strong>旅遊風景</strong>、運用生成式技術打造的<strong>AI 品集</strong>，以及結合趣味與專業實務的<strong>「蛋仔水電通」</strong>居家修繕空間。
+                    </p>
+
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
+                        <a href="#ai-portfolio" class="px-6 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold shadow-lg shadow-indigo-500/30 flex items-center gap-2 transition transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> 瀏覽 AI 品集
+                        </a>
+                        <a href="#egg-plumbing" class="px-6 py-3.5 rounded-2xl bg-amber-400 hover:bg-amber-500 text-slate-900 font-extrabold shadow-lg shadow-amber-400/30 flex items-center gap-2 transition transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-bolt"></i> 呼叫蛋仔水電通
+                        </a>
+                        <a href="#travel" class="px-5 py-3.5 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold border border-slate-200 dark:border-slate-700 flex items-center gap-2 transition">
+                            <i class="fa-solid fa-compass text-emerald-500"></i> 旅遊日記
+                        </a>
+                    </div>
+
+                    <!-- Quick Highlight Stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200/80 dark:border-slate-800 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400">18+</div>
+                            <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">深度造訪城市</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-black text-purple-600 dark:text-purple-400">50+</div>
+                            <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">AI 專案與模型作品</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-black text-amber-500">100%</div>
+                            <div class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">水電疑難排解熱情</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Illustration Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-2xl border border-slate-100 dark:border-slate-700/70 animate-float">
+                        <!-- Custom Eggy Plumber / AI Traveler SVG Mascot -->
+                        <div class="bg-gradient-to-b from-amber-100/70 to-indigo-100/50 dark:from-slate-700 dark:to-slate-800 rounded-2xl p-6 flex flex-col items-center text-center relative overflow-hidden">
+                            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-900 shadow">
+                                圓滾滾斜槓代表
+                            </span>
+                            <!-- Cute Eggy Character SVG -->
+                            <svg class="w-44 h-44 my-2 drop-shadow-xl" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Egg Body -->
+                                <ellipse cx="100" cy="110" rx="62" ry="70" fill="#FFD100" stroke="#1E293B" stroke-width="6"/>
+                                <!-- White Tummy Patch -->
+                                <ellipse cx="100" cy="130" rx="40" ry="42" fill="#FFFBEB"/>
+                                <!-- Plumber Blue Overalls -->
+                                <path d="M46 135 C46 165, 70 180, 100 180 C130 180, 154 165, 154 135 L140 135 L140 115 L60 115 L60 135 Z" fill="#0284C7" stroke="#1E293B" stroke-width="5" stroke-linejoin="round"/>
+                                <!-- Pocket & Bolt Icon -->
+                                <rect x="85" y="132" width="30" height="24" rx="6" fill="#38BDF8" stroke="#1E293B" stroke-width="4"/>
+                                <path d="M102 136 L94 146 H101 L98 153 L107 143 H100 L102 136Z" fill="#FFD100"/>
+                                <!-- Cute Cheeks -->
+                                <ellipse cx="65" cy="100" rx="8" ry="5" fill="#FB7185"/>
+                                <ellipse cx="135" cy="100" rx="8" ry="5" fill="#FB7185"/>
+                                <!-- Eyes -->
+                                <circle cx="78" cy="88" r="7" fill="#1E293B"/>
+                                <circle cx="76" cy="85" r="2.5" fill="white"/>
+                                <circle cx="122" cy="88" r="7" fill="#1E293B"/>
+                                <circle cx="120" cy="85" r="2.5" fill="white"/>
+                                <!-- Happy Mouth -->
+                                <path d="M92 96 Q100 105 108 96" stroke="#1E293B" stroke-width="5" stroke-linecap="round" fill="none"/>
+                                <!-- Safety Helmet + AI Antenna -->
+                                <path d="M48 68 C48 35, 152 35, 152 68 Z" fill="#F97316" stroke="#1E293B" stroke-width="6" stroke-linejoin="round"/>
+                                <rect x="40" y="64" width="120" height="10" rx="5" fill="#FDBA74" stroke="#1E293B" stroke-width="5"/>
+                                <line x1="100" y1="22" x2="100" y2="42" stroke="#1E293B" stroke-width="6" stroke-linecap="round"/>
+                                <circle cx="100" cy="18" r="8" fill="#A855F7" stroke="#1E293B" stroke-width="4"/>
+                                <!-- Wrench in Right Hand -->
+                                <g transform="translate(148, 88) rotate(25)">
+                                    <rect x="0" y="12" width="12" height="36" rx="5" fill="#94A3B8" stroke="#1E293B" stroke-width="4"/>
+                                    <circle cx="6" cy="8" r="11" fill="#CBD5E1" stroke="#1E293B" stroke-width="4"/>
+                                    <rect x="3" y="-2" width="6" height="10" fill="#FFF"/>
+                                </g>
+                            </svg>
+                            <h2 class="text-xl font-black text-slate-800 dark:text-white mt-2">「我各」的全能數位基地</h2>
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
+                                左手寫 Prompt 算圖，右手拿扳手修水龍頭，休假時背著相機去旅行！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section (關於我) -->
+    <section id="about" class="py-16 md:py-24 bg-white dark:bg-slate-800/60 border-y border-slate-200/70 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+                <span class="text-indigo-600 dark:text-indigo-400 font-bold text-sm uppercase tracking-wider">ABOUT ME</span>
+                <h2 class="text-3xl sm:text-4xl font-black mt-2">關於我：跨界斜槓的生活實踐家</h2>
+                <p class="text-slate-600 dark:text-slate-300 mt-3 text-base sm:text-lg">
+                    不喜歡被單一標籤定義！在數位世界裡探索人工智慧的無限可能，在現實生活中用雙手解決居家水電難題，並透過旅行保持對世界的好奇心。
+                </p>
+            </div>
+
+            <!-- 3 Pillars Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Pillar 1: Travel -->
+                <div class="p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 hover:shadow-xl transition group">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-route"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">背包旅人與攝影控</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        走訪台灣秘境與亞洲、歐洲多國，喜歡鑽進巷弄尋找在地美食與建築美學，將旅途中的光影轉化為創作靈感。
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs px-2.5 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-medium">#自助旅行規劃</span>
+                        <span class="text-xs px-2.5 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-medium">#街頭紀實</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: AI Portfolio -->
+                <div class="p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 hover:shadow-xl transition group">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">AI 詠唱師與開發者</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        專注於生成式 AI 繪圖、自動化工作流與實用小工具開發。擅長將複雜的 AI 技術轉化為吸睛的視覺設計與高效率應用。
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs px-2.5 py-1 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 font-medium">#Midjourney</span>
+                        <span class="text-xs px-2.5 py-1 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 font-medium">#ChatGPT應用</span>
+                        <span class="text-xs px-2.5 py-1 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 font-medium">#AI工作流</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Eggy Plumbing -->
+                <div class="p-6 sm:p-8 rounded-3xl bg-amber-50/70 dark:bg-slate-800 border-2 border-amber-300 dark:border-amber-500/40 hover:shadow-xl transition group">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center text-2xl mb-5 group-hover:rotate-12 transition-transform shadow-md">
+                        <i class="fa-solid fa-faucet-drip"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">蛋仔水電通創辦人</h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
+                        把硬派的水電維修變得像「蛋仔派對」一樣親切好懂！提供透明報價、居家水電健檢與 DIY 教學，不再害怕水電突然罷工。
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs px-2.5 py-1 rounded-lg bg-amber-200 dark:bg-amber-950 text-amber-900 dark:text-amber-300 font-semibold">#燈具衛浴安裝</span>
+                        <span class="text-xs px-2.5 py-1 rounded-lg bg-amber-200 dark:bg-amber-950 text-amber-900 dark:text-amber-300 font-semibold">#水管抓漏檢測</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Section (旅遊足跡) -->
+    <section id="travel" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-emerald-600 dark:text-emerald-400 font-bold text-sm uppercase tracking-wider">TRAVEL LOGS</span>
+                    <h2 class="text-3xl sm:text-4xl font-black mt-1">🌍 旅遊足跡與私房攻略</h2>
+                </div>
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap gap-2" id="travel-filters">
+                    <button data-filter="all" class="travel-btn active px-4 py-2 rounded-xl text-sm font-bold bg-emerald-600 text-white shadow transition">全部足跡</button>
+                    <button data-filter="taiwan" class="travel-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition">台灣秘境</button>
+                    <button data-filter="japan" class="travel-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition">日本漫遊</button>
+                    <button data-filter="europe" class="travel-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition">歐洲極光與古鎮</button>
+                </div>
+            </div>
+
+            <!-- Travel Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="travel-grid">
+                <!-- Card 1 -->
+                <article data-category="japan" class="travel-card group bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-200/70 dark:border-slate-700 transition flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/800x500/059669/ffffff?text=Kyoto+Japan'"
+                             alt="京都清晨竹林與古寺" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-slate-900/75 text-white backdrop-blur-sm">
+                            <i class="fa-solid fa-location-dot text-emerald-400 mr-1"></i>日本・京都
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs text-slate-400 mb-1">2025 秋季自由行・5天4夜</div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">嵐山晨霧與鴨川單車慢旅</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-3">
+                                避開觀光人潮的早上六點，騎著單車穿梭在京都古街與鴨川跳烏龜石，紀錄最寧靜的楓紅瞬間。
+                            </p>
+                        </div>
+                        <button onclick="openDetailModal('嵐山晨霧與鴨川單車慢旅', '日本・京都', '避開人潮的最佳方式就是清晨6點出發！沿著鴨川騎行，接著搭乘嵐電前往竹林小徑。私房推薦：百分百手沖咖啡小店與巷弄町家建築巡禮。')" class="mt-4 inline-flex items-center text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:underline">
+                            閱讀旅遊隨筆 <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article data-category="taiwan" class="travel-card group bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-200/70 dark:border-slate-700 transition flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1508248467877-aec1b08de376?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/800x500/0284c7/ffffff?text=Hualien+Coast'"
+                             alt="台灣東海岸山海公路" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-slate-900/75 text-white backdrop-blur-sm">
+                            <i class="fa-solid fa-location-dot text-emerald-400 mr-1"></i>台灣・花東縱谷
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs text-slate-400 mb-1">2025 夏季環島・機車熱血行</div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">台11線蔚藍太平洋與稻浪</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-3">
+                                左手是中央山脈的翠綠金剛大道，右手是一望無際的太平洋藍。整理了 6 個不用人擠人的看海發呆亭清單！
+                            </p>
+                        </div>
+                        <button onclick="openDetailModal('台11線蔚藍太平洋與稻浪', '台灣・花東縱谷', '沿著台11線一路向南，推薦停靠長濱金剛大道與都歷海灘（天空之鏡）。記得退潮前後一小時前往，能拍出超夢幻的海天倒影！')" class="mt-4 inline-flex items-center text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:underline">
+                            閱讀旅遊隨筆 <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article data-category="europe" class="travel-card group bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-200/70 dark:border-slate-700 transition flex flex-col">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/800x500/4f46e5/ffffff?text=Aurora+Trip'"
+                             alt="冰島極光與雪山夜空" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-slate-900/75 text-white backdrop-blur-sm">
+                            <i class="fa-solid fa-location-dot text-emerald-400 mr-1"></i>北歐・冰島環島
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs text-slate-400 mb-1">2024 冬季追光・自駕探險</div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">冰河湖藍冰洞與歐若拉女神</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-3">
+                                在零下十度的黑沙灘等待綠光在夜空炸裂！分享雪地自駕安全守則與極光拍攝參數設定。
+                            </p>
+                        </div>
+                        <button onclick="openDetailModal('冰河湖藍冰洞與歐若拉女神', '北歐・冰島環島', '極光拍攝建議使用大光圈廣角鏡（f/2.8以上），快門約 4~8 秒、ISO 1600-3200。在冰島租車務必選擇 4WD 四輪傳動並加保風沙險！')" class="mt-4 inline-flex items-center text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:underline">
+                            閱讀旅遊隨筆 <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Portfolio Section (AI 品集) -->
+    <section id="ai-portfolio" class="py-16 md:py-24 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Cyberpunk Glow Accent -->
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <span class="text-purple-400 font-bold text-sm uppercase tracking-wider">AI PORTFOLIO & LAB</span>
+                    <h2 class="text-3xl sm:text-4xl font-black mt-1">✨ AI 品集：生成藝術與智慧應用</h2>
+                    <p class="text-slate-300 mt-2 text-sm sm:text-base max-w-2xl">
+                        結合視覺美學與大型語言模型，以下展示我的精選 AI 繪圖、水電助理 Prompt 與自動化實作成果。點擊按鈕可直接複製咒語（Prompt）體驗！
+                    </p>
+                </div>
+                <!-- AI Filter Tabs -->
+                <div class="flex flex-wrap gap-2">
+                    <button data-aifilter="all" class="ai-btn px-4 py-2 rounded-xl text-sm font-bold bg-purple-600 text-white transition">全部作品</button>
+                    <button data-aifilter="art" class="ai-btn px-4 py-2 rounded-xl text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 transition">AI 視覺藝術</button>
+                    <button data-aifilter="tool" class="ai-btn px-4 py-2 rounded-xl text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 transition">AI 智慧工具</button>
+                </div>
+            </div>
+
+            <!-- AI Portfolio Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="ai-grid">
+                <!-- AI Work 1 -->
+                <div data-aicategory="art" class="ai-card bg-slate-800/90 border border-slate-700 rounded-3xl overflow-hidden flex flex-col justify-between hover:border-purple-500/60 transition shadow-lg">
+                    <div>
+                        <div class="relative h-52 bg-gradient-to-br from-indigo-900 via-purple-900 to-amber-700 flex items-center justify-center p-6 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" 
+                                 onerror="this.src='https://placehold.co/800x500/6d28d9/ffffff?text=AI+3D+Eggy+Art'"
+                                 alt="AI 生成 3D 渲染機械水電蛋仔" class="absolute inset-0 w-full h-full object-cover opacity-75 hover:scale-105 transition duration-500">
+                            <span class="relative z-10 px-3 py-1 rounded-full text-xs font-bold bg-purple-600/90 text-white shadow">
+                                Midjourney v6 角色設計
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">賽博龐克「機械蛋仔水電工」3D 角色設定</h3>
+                            <p class="text-slate-300 text-sm mb-4">
+                                運用盲盒公仔材質渲染（Octane Render），打造頭戴霓虹安全帽、手持激光扳手的未來派蛋仔吉祥物。
+                            </p>
+                            <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-700/80 text-xs font-mono text-purple-300 mb-4">
+                                Prompt: Cute round egg mascot wearing neon plumber overalls, holding glowing wrench, Pixar 3D style, Pop Mart blind box texture, studio lighting --ar 4:3
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <button onclick="copyPrompt('Cute round egg mascot wearing neon plumber overalls, holding glowing wrench, Pixar 3D style, Pop Mart blind box texture, studio lighting --ar 4:3')" class="w-full py-2.5 rounded-xl bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/40 font-semibold text-sm transition flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-copy"></i> 複製繪圖 Prompt
+                        </button>
+                    </div>
+                </div>
+
+                <!-- AI Work 2 -->
+                <div data-aicategory="tool" class="ai-card bg-slate-800/90 border border-slate-700 rounded-3xl overflow-hidden flex flex-col justify-between hover:border-purple-500/60 transition shadow-lg">
+                    <div>
+                        <div class="relative h-52 bg-gradient-to-br from-emerald-900 to-slate-900 flex items-center justify-center p-6 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80" 
+                                 onerror="this.src='https://placehold.co/800x500/047857/ffffff?text=AI+Plumbing+Bot'"
+                                 alt="AI 居家水電故障視覺診斷系統" class="absolute inset-0 w-full h-full object-cover opacity-75 hover:scale-105 transition duration-500">
+                            <span class="relative z-10 px-3 py-1 rounded-full text-xs font-bold bg-emerald-600/90 text-white shadow">
+                                GPT-4o 視覺診斷助手
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">居家水電異常 AI 拍照初步判讀系統</h3>
+                            <p class="text-slate-300 text-sm mb-4">
+                                只要拍下家裡漏水位置或配電箱跳閘畫面，透過特調 System Prompt 引導屋主安全斷電並列出可能零件清單。
+                            </p>
+                            <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-700/80 text-xs font-mono text-emerald-300 mb-4">
+                                Prompt: 你是一位擁有甲種電匠與配管證照的台灣資深水電技師，請根據屋主描述的狀況，提供：1.緊急安全處置 2.可能故障原因 3.預估材料規格...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <button onclick="copyPrompt('你是一位擁有甲種電匠與配管證照的台灣資深水電技師，請根據屋主描述的狀況，提供：1.緊急安全處置 2.可能故障原因 3.預估維修工序與材料規格。')" class="w-full py-2.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600 text-emerald-300 hover:text-white border border-emerald-500/40 font-semibold text-sm transition flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-copy"></i> 複製系統 Prompt
+                        </button>
+                    </div>
+                </div>
+
+                <!-- AI Work 3 -->
+                <div data-aicategory="tool" class="ai-card bg-slate-800/90 border border-slate-700 rounded-3xl overflow-hidden flex flex-col justify-between hover:border-purple-500/60 transition shadow-lg">
+                    <div>
+                        <div class="relative h-52 bg-gradient-to-br from-blue-900 to-indigo-900 flex items-center justify-center p-6 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80" 
+                                 onerror="this.src='https://placehold.co/800x500/1d4ed8/ffffff?text=AI+Travel+Planner'"
+                                 alt="AI 旅遊行程順路最佳化產生器" class="absolute inset-0 w-full h-full object-cover opacity-75 hover:scale-105 transition duration-500">
+                            <span class="relative z-10 px-3 py-1 rounded-full text-xs font-bold bg-blue-600/90 text-white shadow">
+                                自動化旅遊工作流
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">一鍵生成自由行順路地圖與預算表</h3>
+                            <p class="text-slate-300 text-sm mb-4">
+                                整合 Google Maps 距離概念與交通票券建議，輸入天數與偏好即可產出不走回頭路的表格化行程表。
+                            </p>
+                            <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-700/80 text-xs font-mono text-blue-300 mb-4">
+                                Prompt: 請幫我規劃5天4夜京都自由行，以地鐵與步行順路為最優先，輸出Markdown表格包含：時段、景點、交通方式、預估花費與雨天備案。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <button onclick="copyPrompt('請幫我規劃5天4夜京都自由行，以地鐵與步行順路為最優先，輸出Markdown表格包含：時段、景點、交通方式、預估花費與雨天備案。')" class="w-full py-2.5 rounded-xl bg-blue-600/20 hover:bg-blue-600 text-blue-300 hover:text-white border border-blue-500/40 font-semibold text-sm transition flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-copy"></i> 複製旅遊 Prompt
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eggy Plumbing Section (蛋仔水電通) -->
+    <section id="egg-plumbing" class="py-16 md:py-24 bg-gradient-to-b from-amber-50/80 to-white dark:from-slate-800/50 dark:to-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400 text-slate-900 font-black text-xs sm:text-sm shadow-sm mb-3">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> 居家修繕神隊友・透明安心不踩雷
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+                    🥚 蛋仔水電通：專治居家水電疑難雜症
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 mt-3 text-base sm:text-lg">
+                    水管堵住、插座沒電、想換智慧馬桶或吸頂燈？別慌張！先用下方的<strong>「蛋仔智慧水電初步估算器」</strong>了解狀況與參考費用區間。
+                </p>
+            </div>
+
+            <!-- Interactive Diagnostic & Cost Estimator Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Left: Service Grid (7 cols) -->
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border-2 border-amber-200 dark:border-slate-700 shadow-sm hover:border-amber-400 transition">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-faucet"></i>
+                            </span>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">熱門服務</span>
+                        </div>
+                        <h3 class="text-lg font-extrabold mb-1">給排水與衛浴設備安裝</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-3">
+                            水龍頭滴水更換、馬桶水箱進排水器維修、洗臉盆與免治馬桶座安裝。
+                        </p>
+                        <div class="text-xs font-bold text-amber-600 dark:text-amber-400">參考工資：NT$ 800 起</div>
+                    </div>
+
+                    <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border-2 border-amber-200 dark:border-slate-700 shadow-sm hover:border-amber-400 transition">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-bolt-lightning"></i>
+                            </span>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">安全第一</span>
+                        </div>
+                        <h3 class="text-lg font-extrabold mb-1">電力照明與開關插座更新</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-3">
+                            老舊插座發熱更換、LED 吸頂燈/吊扇燈安裝、無熔絲開關跳電查修與迴路配置。
+                        </p>
+                        <div class="text-xs font-bold text-amber-600 dark:text-amber-400">參考工資：NT$ 600 起</div>
+                    </div>
+
+                    <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border-2 border-amber-200 dark:border-slate-700 shadow-sm hover:border-amber-400 transition">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-12 h-12 rounded-2xl bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-toilet-paper"></i>
+                            </span>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300">快速通管</span>
+                        </div>
+                        <h3 class="text-lg font-extrabold mb-1">廚房流理台与排水管疏通</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-3">
+                            廚房油垢堵塞、浴室毛髮積水不退、高壓水刀與電動通管機專業疏通。
+                        </p>
+                        <div class="text-xs font-bold text-amber-600 dark:text-amber-400">參考工資：NT$ 1,500 起</div>
+                    </div>
+
+                    <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border-2 border-amber-200 dark:border-slate-700 shadow-sm hover:border-amber-400 transition">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-12 h-12 rounded-2xl bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-temperature-three-quarters"></i>
+                            </span>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300">冬夏必備</span>
+                        </div>
+                        <h3 class="text-lg font-extrabold mb-1">加壓馬達與熱水器檢修</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mb-3">
+                            洗澡水忽冷忽熱、水壓太小安裝靜音變頻加壓馬達、浴室暖風機安裝。
+                        </p>
+                        <div class="text-xs font-bold text-amber-600 dark:text-amber-400">參考工資：NT$ 1,200 起</div>
+                    </div>
+                </div>
+
+                <!-- Right: Interactive Eggy Estimator Tool (5 cols) -->
+                <div class="lg:col-span-5 bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-amber-400">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-11 h-11 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center font-black text-xl shadow">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black">蛋仔水電通・秒速估價與自救指南</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">點選遇到的問題，立即查看 DIY 建議與費用預估</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label for="plumbing-issue" class="block text-sm font-bold mb-1.5">1. 您目前遇到的水電狀況是？</label>
+                            <select id="plumbing-issue" onchange="calculatePlumbingEstimate()" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 font-medium focus:outline-none focus:ring-2 focus:ring-amber-400">
+                                <option value="faucet">💧 水龍頭關不緊 / 持續滴水</option>
+                                <option value="clog">🌀 洗手台或浴室地板排水超慢 / 堵塞</option>
+                                <option value="socket">⚡ 插座沒電 / 聞到焦味 / 開關接觸不良</option>
+                                <option value="light">💡 想要更換吸頂燈 / 燈具閃爍不亮</option>
+                                <option value="toilet">🚽 馬桶不停進水 / 水箱漏水有流水聲</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold mb-1.5">2. 是否需要蛋仔代購五金零件？</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="parts-option" value="self" onchange="calculatePlumbingEstimate()" class="peer sr-only" checked>
+                                    <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-700 text-center text-sm font-semibold peer-checked:bg-amber-400 peer-checked:text-slate-900 peer-checked:border-amber-500 transition">
+                                        自備零件（純工資）
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="parts-option" value="included" onchange="calculatePlumbingEstimate()" class="peer sr-only">
+                                    <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-700 text-center text-sm font-semibold peer-checked:bg-amber-400 peer-checked:text-slate-900 peer-checked:border-amber-500 transition">
+                                        連工帶料幫我準備
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Diagnostic Result Box -->
+                        <div class="p-4 rounded-2xl bg-amber-50 dark:bg-slate-900/90 border border-amber-200 dark:border-amber-500/30 space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">預估處理費用區間</span>
+                                <span id="estimate-price" class="text-2xl font-black text-amber-600 dark:text-amber-400">NT$ 800 - 1,200</span>
+                            </div>
+                            <div class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed pt-2 border-t border-amber-200/60 dark:border-slate-800">
+                                <strong class="text-amber-700 dark:text-amber-400"><i class="fa-solid fa-lightbulb mr-1"></i>蛋仔先鋒自救小撇步：</strong>
+                                <span id="estimate-tip">可先用一字起子順時針關閉水槽下方的「三角凡爾」止水閥，通常更換內部陶瓷閥芯即可解決！</span>
+                            </div>
+                        </div>
+
+                        <button onclick="prefillContactWithPlumbing()" class="w-full py-3.5 rounded-2xl bg-slate-900 dark:bg-amber-400 text-white dark:text-slate-900 font-black hover:opacity-95 transition flex items-center justify-center gap-2 shadow-lg">
+                            <i class="fa-solid fa-calendar-check"></i> 將此狀況帶入下方聯絡表單預約
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (聯絡資訊) -->
+    <section id="contact" class="py-16 md:py-24 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                <!-- Left Contact Info (5 cols) -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-indigo-600 dark:text-indigo-400 font-bold text-sm uppercase tracking-wider">CONTACT ME</span>
+                        <h2 class="text-3xl sm:text-4xl font-black mt-1">📬 聯絡資訊與合作洽談</h2>
+                        <p class="text-slate-600 dark:text-slate-300 mt-3 text-base leading-relaxed">
+                            無論您想交流<strong>旅遊攻略</strong>、委託<strong>AI 視覺與專案開發</strong>，或是需要<strong>蛋仔水電通</strong>的居家修繕諮詢，都歡迎隨時與我聯繫！
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">
+                            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">電子信箱 Email</div>
+                                <div class="font-bold text-sm sm:text-base">hello.myhub@example.com</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-brands fa-line"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">官方 LINE 諮詢（蛋仔水電通 / AI 專案）</div>
+                                <div class="font-bold text-sm sm:text-base">@eggy_fix_ai</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700">
+                            <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400">主要服務與駐點區域</div>
+                                <div class="font-bold text-sm sm:text-base">台灣雙北生活圈・線上遠端全球合作</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="#contact" aria-label="Instagram" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-pink-500 hover:text-white flex items-center justify-center text-lg transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#contact" aria-label="YouTube" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-red-600 hover:text-white flex items-center justify-center text-lg transition">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="#contact" aria-label="GitHub" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-900 hover:text-white flex items-center justify-center text-lg transition">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="#contact" aria-label="Threads" class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-indigo-600 hover:text-white flex items-center justify-center text-lg transition">
+                            <i class="fa-brands fa-threads"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Contact Form (7 cols) -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)" class="bg-slate-50 dark:bg-slate-800/90 p-6 sm:p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-lg space-y-5">
+                        <h3 class="text-2xl font-black mb-2">傳送訊息給我</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="user-name" class="block text-sm font-bold mb-1.5">您的稱呼 *</label>
+                                <input type="text" id="user-name" required placeholder="例如：陳先生 / 小美" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label for="user-contact" class="block text-sm font-bold mb-1.5">Email 或 聯絡電話 *</label>
+                                <input type="text" id="user-contact" required placeholder="0912-345-678 或 Email" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="inquiry-topic" class="block text-sm font-bold mb-1.5">洽詢主題 *</label>
+                            <select id="inquiry-topic" class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <option value="蛋仔水電通預約">🔧 蛋仔水電通：居家修繕預約 / 報價諮詢</option>
+                                <option value="AI作品集與專案合作">✨ AI 品集：AI 繪圖設計 / 自動化工具合作</option>
+                                <option value="旅遊攝影與行程交流">✈️ 旅遊足跡：旅遊攻略詢問 / 攝影合作</option>
+                                <option value="其他交流">💬 其他問題與日常打招呼</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="user-message" class="block text-sm font-bold mb-1.5">詳細內容說明 *</label>
+                            <textarea id="user-message" rows="4" required placeholder="請告訴我您的需求，若是水電問題可簡述狀況與所在地區..." class="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold text-base shadow-lg shadow-indigo-500/25 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> 送出訊息
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-slate-900 text-slate-400 text-center text-sm border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 屬於我各的個人網站. All Rights Reserved.</p>
+            <div class="flex flex-wrap justify-center gap-4 text-xs">
+                <a href="#about" class="hover:text-white transition">關於我</a>
+                <a href="#travel" class="hover:text-white transition">旅遊足跡</a>
+                <a href="#ai-portfolio" class="hover:text-white transition">AI 品集</a>
+                <a href="#egg-plumbing" class="hover:text-amber-400 transition">蛋仔水電通</a>
+                <a href="#contact" class="hover:text-white transition">聯絡資訊</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Modal for Travel Details (No alert used) -->
+    <div id="detail-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/70 backdrop-blur-sm p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-700 animate-float" style="animation-duration: 0s;">
+            <div class="flex items-center justify-between mb-4">
+                <span id="modal-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"></span>
+                <button onclick="closeDetailModal()" aria-label="關閉視窗" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center hover:bg-slate-200 transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <h3 id="modal-title" class="text-2xl font-black mb-3"></h3>
+            <p id="modal-body" class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base mb-6"></p>
+            <button onclick="closeDetailModal()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition">
+                太棒了，收下私房筆記！
+            </button>
+        </div>
+    </div>
+
+    <!-- Custom Toast Notification -->
+    <div id="toast-box" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 font-semibold text-sm">
+        <i class="fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600 text-lg"></i>
+        <span id="toast-text">訊息已通知</span>
+    </div>
+
+    <script>
+        // 1. Mobile Hamburger Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            } else {
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            });
+        });
+
+        // 2. Dark / Light Theme Toggle
+        const themeToggleBtns = [
+            document.getElementById('theme-toggle'),
+            document.getElementById('theme-toggle-mobile')
+        ];
+        const themeIcons = [
+            document.getElementById('theme-icon'),
+            document.getElementById('theme-icon-mobile')
+        ];
+
+        function updateThemeIcons(isDark) {
+            themeIcons.forEach(icon => {
+                if (isDark) {
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                } else {
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                }
+            });
+        }
+
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                updateThemeIcons(isDark);
+                showToast(isDark ? '已切換至深色星空模式 🌙' : '已切換至明亮日光模式 ☀️');
+            });
+        });
+
+        // 3. Travel Footprints Category Filter
+        const travelBtns = document.querySelectorAll('.travel-btn');
+        const travelCards = document.querySelectorAll('.travel-card');
+
+        travelBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+                travelBtns.forEach(b => {
+                    b.classList.remove('bg-emerald-600', 'text-white', 'shadow');
+                    b.classList.add('bg-white', 'dark:bg-slate-800');
+                });
+                btn.classList.add('bg-emerald-600', 'text-white', 'shadow');
+                btn.classList.remove('bg-white', 'dark:bg-slate-800');
+
+                travelCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // 4. AI Portfolio Category Filter
+        const aiBtns = document.querySelectorAll('.ai-btn');
+        const aiCards = document.querySelectorAll('.ai-card');
+
+        aiBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-aifilter');
+                aiBtns.forEach(b => {
+                    b.classList.remove('bg-purple-600', 'text-white');
+                    b.classList.add('bg-slate-800', 'text-slate-200');
+                });
+                btn.classList.add('bg-purple-600', 'text-white');
+                btn.classList.remove('bg-slate-800', 'text-slate-200');
+
+                aiCards.forEach(card => {
+                    const category = card.getAttribute('data-aicategory');
+                    if (filter === 'all' || category === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // 5. Copy AI Prompt using execCommand for iframe compatibility
+        function copyPrompt(promptText) {
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = promptText;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            try {
+                document.execCommand('copy');
+                showToast('已成功複製 AI 咒語 (Prompt)！✨');
+            } catch (err) {
+                showToast('複製失敗，請手動選取複製');
+            }
+            document.body.removeChild(tempTextArea);
+        }
+
+        // 6. Eggy Plumbing Estimator Logic
+        const plumbingData = {
+            faucet: {
+                selfPrice: 'NT$ 600 - 900',
+                partPrice: 'NT$ 1,200 - 2,200',
+                tip: '可先用一字起子順時針關閉水槽下方的「三角凡爾」止水閥，通常更換內部陶瓷閥芯或止水皮即可解決！'
+            },
+            clog: {
+                selfPrice: 'NT$ 1,200 - 1,800',
+                partPrice: 'NT$ 1,500 - 2,500',
+                tip: '切勿倒入過量強酸通樂以免腐蝕老舊軟管！可先拆下洗手台下方 S 型存水彎清除毛髮與油垢。'
+            },
+            socket: {
+                selfPrice: 'NT$ 500 - 800',
+                partPrice: 'NT$ 800 - 1,400',
+                tip: '若插座出現焦黑或插頭鬆動，請立即關閉總配電箱對應迴路的無熔絲開關（NFB），避免電線走火！'
+            },
+            light: {
+                selfPrice: 'NT$ 600 - 1,000',
+                partPrice: 'NT$ 1,500 - 3,200',
+                tip: '更換燈具前務必確認牆壁開關已關閉（建議連同分路斷路器關閉），並檢查天花板出線盒螺絲承重力。'
+            },
+            toilet: {
+                selfPrice: 'NT$ 700 - 1,000',
+                partPrice: 'NT$ 1,100 - 1,800',
+                tip: '打開水箱蓋觀察水位是否超過溢流管，多數情況只需調整浮球高度或更換劣化的止水皮拍蓋。'
+            }
+        };
+
+        function calculatePlumbingEstimate() {
+            const issue = document.getElementById('plumbing-issue').value;
+            const partOption = document.querySelector('input[name="parts-option"]:checked').value;
+            const priceEl = document.getElementById('estimate-price');
+            const tipEl = document.getElementById('estimate-tip');
+
+            const item = plumbingData[issue];
+            priceEl.textContent = partOption === 'self' ? item.selfPrice : item.partPrice;
+            tipEl.textContent = item.tip;
+        }
+
+        function prefillContactWithPlumbing() {
+            const selectEl = document.getElementById('plumbing-issue');
+            const issueText = selectEl.options[selectEl.selectedIndex].text;
+            const partOption = document.querySelector('input[name="parts-option"]:checked').value === 'self' ? '自備零件' : '連工帶料';
+            const priceText = document.getElementById('estimate-price').textContent;
+
+            document.getElementById('inquiry-topic').value = '蛋仔水電通預約';
+            document.getElementById('user-message').value = `您好！我想預約【蛋仔水電通】檢修服務：\n・狀況項目：${issueText}\n・材料需求：${partOption}\n・系統預估區間：${priceText}\n・希望預約時段與所在地區：`;
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            showToast('已將水電狀況帶入聯絡表單！🔧');
+        }
+
+        // 7. Travel Detail Modal
+        function openDetailModal(title, badge, body) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-badge').textContent = badge;
+            document.getElementById('modal-body').textContent = body;
+            const modal = document.getElementById('detail-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeDetailModal() {
+            const modal = document.getElementById('detail-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // 8. Contact Form Submission
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('user-name').value;
+            const topic = document.getElementById('inquiry-topic').value;
+            showToast(`感謝 ${name}！已收到您的「${topic}」訊息，我會盡快回覆您！🎉`);
+            document.getElementById('contact-form').reset();
+        }
+
+        // 9. Toast Helper
+        let toastTimeout;
+        function showToast(message) {
+            const toastBox = document.getElementById('toast-box');
+            const toastText = document.getElementById('toast-text');
+            toastText.textContent = message;
+            toastBox.classList.remove('translate-y-24', 'opacity-0');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toastBox.classList.add('translate-y-24', 'opacity-0');
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
