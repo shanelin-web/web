@@ -1,0 +1,9 @@
+# Keep this public repository focused on website files.
+/lin-liang-gen-brand-site/
+/work/
+*.exe
+*.pdf
+*.docx
+*.tar.gz
+*.tmp
+~*
