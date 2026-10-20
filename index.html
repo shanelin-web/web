@@ -3,396 +3,271 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b2035">
-  <meta name="description" content="林良亘的個人品牌網站，介紹水電與通訊背景、家庭網路建置方向、專業資格，以及 AI 工具學習與實作案例。">
-  <title>林良亘｜水電專業 × AI 應用</title>
+  <meta name="theme-color" content="#1f332b">
+  <meta name="description" content="林良亘的個人品牌網站：水電專業、家庭網路建置與 AI 工具學習。">
+  <title>林良亘｜水電專業・AI 學習中</title>
   <style>
-    :root {
-      --ink: #102638;
-      --navy: #0b2035;
-      --navy-2: #12364b;
-      --teal: #187a78;
-      --mint: #b8f1df;
-      --lime: #d8f98c;
-      --paper: #f4f7f4;
-      --white: #ffffff;
-      --muted: #647681;
-      --line: #dce6e2;
-      --gold: #f0b66b;
-      --radius: 22px;
-      --shadow: 0 22px 60px rgba(11, 32, 53, .10);
+    :root { --ink:#1c2822; --forest:#203b30; --pine:#385947; --paper:#f5f0e6; --paper-deep:#e9dfcf; --rust:#bd633e; --sky:#7fc8d5; --lime:#c6dc72; --line:rgba(28,40,34,.2); --serif:Georgia,"Noto Serif TC","PMingLiU",serif; --sans:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:80px; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.7; }
+    img { display:block; max-width:100%; }
+    a { color:inherit; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    .wrap { width:min(1180px,calc(100% - 48px)); margin:0 auto; }
+    .eyebrow { display:flex; align-items:center; gap:9px; margin:0 0 14px; color:var(--rust); font-size:11px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+    .eyebrow::before { width:25px; height:2px; background:currentColor; content:""; }
+    .script { font-family:var(--serif); font-style:italic; font-weight:600; }
+    .section-title { max-width:760px; margin:0; font-family:var(--serif); font-size:clamp(36px,5vw,62px); font-weight:700; letter-spacing:-.055em; line-height:1.08; }
+    .section-copy { max-width:610px; margin:19px 0 0; color:#56645b; font-size:16px; }
+
+    .topbar { position:sticky; top:0; z-index:20; background:rgba(32,59,48,.94); color:white; backdrop-filter:blur(14px); border-bottom:1px solid rgba(255,255,255,.16); }
+    .nav { min-height:73px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
+    .brand { display:inline-flex; align-items:center; gap:11px; text-decoration:none; font-family:var(--serif); font-size:19px; font-weight:700; letter-spacing:.07em; }
+    .brand-mark { display:grid; width:34px; height:34px; place-items:center; background:var(--lime); color:var(--forest); border-radius:50% 50% 50% 8px; font-family:var(--sans); font-size:14px; font-weight:900; transform:rotate(-8deg); }
+    .brand small { display:block; margin-top:-3px; color:#c7d2c9; font-family:var(--sans); font-size:9px; font-weight:700; letter-spacing:.15em; }
+    .nav-links { display:flex; align-items:center; gap:25px; }
+    .nav-links a { color:#e6eee8; font-size:13px; font-weight:700; text-decoration:none; transition:color .2s ease; }
+    .nav-links a:hover,.nav-links a:focus-visible { color:var(--lime); }
+    .nav-cta { padding:8px 15px; border:1px solid rgba(255,255,255,.65); border-radius:999px; }
+    .menu-toggle { display:none; border:1px solid rgba(255,255,255,.55); border-radius:999px; background:transparent; color:white; font:inherit; padding:8px 12px; }
+
+    .hero { position:relative; overflow:hidden; background:var(--paper); }
+    .hero::before { position:absolute; right:-13vw; bottom:-18vw; width:55vw; height:55vw; border:1px solid rgba(56,89,71,.11); border-radius:50%; box-shadow:0 0 0 38px rgba(56,89,71,.035),0 0 0 100px rgba(56,89,71,.025); content:""; }
+    .hero-grid { position:relative; min-height:620px; display:grid; grid-template-columns:.91fr 1.09fr; align-items:stretch; }
+    .hero-copy { position:relative; z-index:1; display:flex; flex-direction:column; justify-content:center; padding:68px 38px 74px 0; }
+    .hero h1 { max-width:580px; margin:0; color:var(--ink); font-family:var(--serif); font-size:clamp(70px,9.3vw,123px); font-weight:700; letter-spacing:-.105em; line-height:.81; }
+    .hero h1 span { display:block; margin:24px 0 0 5px; color:var(--rust); font-family:var(--sans); font-size:clamp(19px,2.2vw,29px); font-weight:800; letter-spacing:-.03em; line-height:1.25; }
+    .hero-intro { max-width:475px; margin:24px 0 26px 5px; padding-left:17px; border-left:2px solid var(--pine); color:#536258; font-size:16px; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-left:5px; }
+    .button { display:inline-flex; min-height:46px; align-items:center; justify-content:center; gap:8px; padding:10px 18px; border:1px solid transparent; border-radius:999px; font-size:14px; font-weight:800; text-decoration:none; transition:transform .2s ease,box-shadow .2s ease,background .2s ease; }
+    .button:hover { transform:translateY(-2px); }
+    .button-primary { background:var(--forest); color:white; box-shadow:4px 4px 0 var(--lime); }
+    .button-primary:hover { background:var(--pine); box-shadow:6px 6px 0 var(--lime); }
+    .button-secondary { border-color:var(--forest); color:var(--forest); }
+    .button-secondary:hover { background:#e2ebdf; }
+    .hero-photo { position:relative; overflow:hidden; min-height:620px; background:#d5c6b0; }
+    .hero-photo img { width:100%; height:100%; object-fit:cover; object-position:65% center; }
+    .photo-note { position:absolute; right:20px; bottom:20px; padding:7px 10px; background:rgba(32,59,48,.87); color:#e8eee5; font-size:10px; font-weight:700; letter-spacing:.1em; }
+    .photo-note::before { margin-right:6px; color:var(--lime); content:"●"; }
+    .hero-stamp { position:absolute; top:34px; left:-29px; z-index:1; display:grid; width:110px; height:110px; place-items:center; border:1px solid rgba(32,59,48,.45); border-radius:50%; background:rgba(245,240,230,.92); color:var(--forest); font:700 17px/1.1 var(--serif); text-align:center; transform:rotate(-13deg); }
+    .hero-stamp small { display:block; margin-top:4px; font:800 8px var(--sans); letter-spacing:.1em; }
+
+    .topic-ribbon { overflow:hidden; background:var(--forest); color:var(--paper); }
+    .topic-flow { min-height:74px; display:flex; align-items:center; gap:25px; white-space:nowrap; font-size:12px; font-weight:800; letter-spacing:.14em; }
+    .topic-flow b { color:var(--lime); font-size:21px; }
+    .topic-flow span { color:#d3e0d6; }
+
+    .intro { padding:114px 0; background:var(--paper); }
+    .intro-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:85px; align-items:start; }
+    .intro-label { position:sticky; top:110px; }
+    .intro-label .mini-name { margin:17px 0 0; color:var(--pine); font-family:var(--serif); font-size:29px; letter-spacing:-.04em; }
+    .intro-text { font-family:var(--serif); font-size:clamp(27px,3.2vw,42px); letter-spacing:-.05em; line-height:1.52; }
+    .intro-text p { margin:0; }
+    .intro-text mark { padding:0 .08em; background:linear-gradient(transparent 56%,var(--lime) 56%); color:inherit; }
+    .intro-detail { max-width:590px; margin:30px 0 0; color:#5b685f; font-family:var(--sans); font-size:15px; }
+    .work-notes { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:36px; }
+    .note { min-height:155px; padding:17px; border:1px solid var(--line); background:#fbf9f2; }
+    .note-number { color:var(--rust); font-size:11px; font-weight:900; letter-spacing:.12em; }
+    .note strong { display:block; margin-top:29px; font-size:16px; line-height:1.35; }
+    .note small { display:block; margin-top:4px; color:#718076; font-size:12px; }
+
+    .story { padding:105px 0 116px; background:var(--paper-deep); }
+    .story-head { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:57px; }
+    .story-head .section-copy { margin-bottom:4px; }
+    .journey { position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+    .journey::before { position:absolute; right:6%; left:6%; top:35px; height:1px; background:var(--pine); content:""; }
+    .journey-item { position:relative; padding:0 18px 0 0; }
+    .journey-dot { display:grid; width:71px; height:71px; place-items:center; border:1px solid var(--pine); border-radius:50%; background:var(--paper); color:var(--forest); font-family:var(--serif); font-size:23px; font-weight:700; }
+    .journey-item:nth-child(2) .journey-dot { background:var(--sky); }
+    .journey-item:nth-child(3) .journey-dot { background:var(--lime); }
+    .journey-item:nth-child(4) .journey-dot { background:var(--rust); color:white; }
+    .journey-year { margin:20px 0 5px; color:var(--rust); font-size:11px; font-weight:900; letter-spacing:.12em; }
+    .journey h3 { margin:0; font-family:var(--serif); font-size:22px; letter-spacing:-.035em; }
+    .journey p { max-width:205px; margin:8px 0 0; color:#5b685f; font-size:13px; }
+
+    .portfolio { position:relative; overflow:hidden; padding:118px 0; background:var(--forest); color:white; }
+    .portfolio::after { position:absolute; right:-34px; bottom:-85px; color:rgba(255,255,255,.055); font-family:var(--serif); font-size:clamp(110px,18vw,270px); font-weight:700; letter-spacing:-.1em; content:"AI"; }
+    .portfolio .section-title { color:white; }
+    .portfolio .section-copy { color:#c9d3cb; }
+    .portfolio .eyebrow { color:var(--lime); }
+    .portfolio-grid { position:relative; z-index:1; display:grid; grid-template-columns:1.15fr .85fr; gap:18px; margin-top:48px; }
+    .lab-card { min-height:310px; padding:30px; border:1px solid rgba(255,255,255,.3); background:rgba(255,255,255,.07); }
+    .lab-card:first-child { background:var(--lime); color:var(--ink); }
+    .lab-card .card-status { display:inline-flex; align-items:center; gap:7px; color:inherit; font-size:11px; font-weight:900; letter-spacing:.11em; }
+    .lab-card .card-status::before { width:7px; height:7px; border-radius:50%; background:var(--rust); content:""; }
+    .lab-card h3 { max-width:470px; margin:52px 0 14px; font-family:var(--serif); font-size:clamp(28px,3vw,40px); letter-spacing:-.05em; line-height:1.15; }
+    .lab-card p { max-width:460px; margin:0; color:inherit; font-size:14px; opacity:.78; }
+    .lab-card .arrow { float:right; margin-top:27px; font-family:var(--serif); font-size:35px; }
+    .lab-steps { margin-top:31px; padding-top:16px; border-top:1px solid rgba(255,255,255,.32); color:#d5dfd6; font-size:12px; }
+    .lab-card:first-child .lab-steps { border-color:rgba(28,40,34,.25); color:#4a594f; }
+    .lab-steps span { margin-right:11px; }
+    .lab-steps b { color:var(--rust); }
+
+    .credentials { padding:116px 0; background:var(--paper); }
+    .credentials-layout { display:grid; grid-template-columns:.75fr 1.25fr; gap:80px; align-items:start; }
+    .credentials-side { position:sticky; top:108px; }
+    .credentials-side .section-title { font-size:clamp(39px,4.4vw,55px); }
+    .credentials-list { border-top:1px solid var(--line); }
+    .credential { display:grid; grid-template-columns:72px 1fr auto; align-items:center; min-height:82px; border-bottom:1px solid var(--line); transition:padding .2s ease,background .2s ease; }
+    .credential:hover { padding-left:11px; background:#ece6d9; }
+    .credential-no { color:var(--rust); font-family:var(--serif); font-size:20px; font-weight:700; }
+    .credential-name { font-size:17px; font-weight:800; }
+    .credential-mark { color:var(--pine); font-size:18px; }
+    .credential-note { margin:22px 0 0; color:#718076; font-size:12px; }
+
+    .contact { position:relative; overflow:hidden; padding:112px 0; background:var(--rust); color:white; }
+    .contact::before { position:absolute; right:-120px; top:-130px; width:390px; height:390px; border:1px solid rgba(255,255,255,.34); border-radius:50%; box-shadow:0 0 0 35px rgba(255,255,255,.09),0 0 0 92px rgba(255,255,255,.055); content:""; }
+    .contact-inner { position:relative; z-index:1; display:flex; justify-content:space-between; gap:60px; align-items:end; }
+    .contact .eyebrow { color:#ffe8d8; }
+    .contact .section-title { max-width:720px; color:white; font-size:clamp(48px,6.5vw,80px); }
+    .contact p { max-width:590px; margin:19px 0 0; color:#ffeadf; }
+    .email-button { flex:0 0 auto; min-width:217px; background:var(--forest); color:white; box-shadow:5px 5px 0 var(--lime); }
+    .email-button:hover { background:#304d3d; }
+    .footer { padding:22px 0; background:#182b23; color:#c6d1c9; font-size:12px; }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; }
+    .footer a { color:var(--lime); text-decoration:none; }
+    .reveal { opacity:0; transform:translateY(18px); transition:opacity .55s ease,transform .55s ease; }
+    .reveal.is-visible { opacity:1; transform:none; }
+    :focus-visible { outline:3px solid var(--lime); outline-offset:4px; }
+    @media (max-width:860px) {
+      .hero-grid,.intro-grid,.credentials-layout { grid-template-columns:1fr; gap:0; }
+      .hero-copy { min-height:510px; padding:66px 0 52px; }
+      .hero-photo { min-height:490px; }
+      .hero-stamp { left:18px; }
+      .intro-label,.credentials-side { position:static; margin-bottom:43px; }
+      .journey { grid-template-columns:1fr 1fr; gap:38px 20px; }
+      .journey::before { display:none; }
+      .portfolio-grid { grid-template-columns:1fr; }
+      .contact-inner { align-items:flex-start; flex-direction:column; }
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-    body { margin: 0; color: var(--ink); background: var(--paper); font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.7; }
-    a { color: inherit; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
-    .topbar { position: sticky; top: 0; z-index: 20; background: rgba(11, 32, 53, .96); color: white; backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.09); }
-    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; color: white; text-decoration: none; font-weight: 800; letter-spacing: .04em; }
-    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; background: var(--mint); color: var(--navy); font-size: 19px; font-weight: 900; }
-    .brand small { display: block; color: #a9c3cc; font-size: 10px; font-weight: 600; letter-spacing: .12em; line-height: 1.3; }
-    .nav-links { display: flex; align-items: center; gap: 30px; }
-    .nav-links a { color: #d4e1e3; text-decoration: none; font-size: 14px; font-weight: 600; transition: color .2s ease; }
-    .nav-links a:hover, .nav-links a:focus-visible { color: var(--mint); }
-    .nav-links .nav-cta { padding: 10px 18px; border: 1px solid rgba(184,241,223,.42); border-radius: 999px; color: var(--mint); }
-    .menu-toggle { display: none; border: 1px solid rgba(255,255,255,.25); border-radius: 12px; background: transparent; color: white; font: inherit; padding: 9px 12px; cursor: pointer; }
-
-    .hero { position: relative; overflow: hidden; background: var(--navy); color: white; }
-    .hero::before, .hero::after { content: ""; position: absolute; border: 1px solid rgba(184,241,223,.10); border-radius: 50%; pointer-events: none; }
-    .hero::before { width: 620px; height: 620px; right: -220px; top: -320px; }
-    .hero::after { width: 440px; height: 440px; right: -130px; top: -230px; }
-    .hero-grid { position: relative; z-index: 1; min-height: 570px; display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 38px; padding-block: 68px 74px; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 20px; color: var(--mint); font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-    .eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--lime); }
-    h1, h2, h3, p { margin-top: 0; }
-    h1 { max-width: 650px; margin-bottom: 20px; font-size: clamp(42px, 6vw, 72px); line-height: 1.12; letter-spacing: .025em; }
-    h1 span { display: block; margin-top: 14px; color: var(--mint); font-size: clamp(21px, 2.4vw, 30px); line-height: 1.4; letter-spacing: .02em; }
-    .hero-copy { max-width: 610px; margin-bottom: 30px; color: #cfdbdf; font-size: 17px; }
-    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 21px; border: 1px solid transparent; border-radius: 999px; text-decoration: none; font-size: 14px; font-weight: 800; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
-    .button:hover { transform: translateY(-2px); }
-    .button-primary { background: var(--mint); color: var(--navy); }
-    .button-primary:hover { background: #d1ffec; }
-    .button-quiet { border-color: rgba(255,255,255,.25); color: white; }
-    .button-quiet:hover { border-color: var(--mint); color: var(--mint); }
-    .hero-visual { position: relative; display: grid; place-items: center; min-height: 390px; }
-    .visual-card { position: relative; width: min(100%, 460px); min-height: 350px; padding: 28px; border: 1px solid rgba(184,241,223,.25); border-radius: 34px; background: linear-gradient(145deg, rgba(25,73,88,.83), rgba(13,43,62,.72)); box-shadow: 0 28px 90px rgba(0,0,0,.22); }
-    .visual-card::before { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(255,255,255,.06); border-radius: 26px; pointer-events: none; }
-    .visual-label { position: absolute; top: 25px; left: 28px; z-index: 1; color: #a9c7cf; font-size: 10px; font-weight: 800; letter-spacing: .18em; }
-    .visual-name { position: absolute; bottom: 26px; left: 30px; z-index: 1; }
-    .visual-name strong { display: block; font-size: 22px; letter-spacing: .04em; }
-    .visual-name span { color: #a9c7cf; font-size: 12px; letter-spacing: .11em; }
-    .visual-seal { position: absolute; right: 23px; bottom: 24px; display: grid; width: 56px; height: 56px; place-items: center; border: 1px solid rgba(216,249,140,.55); border-radius: 50%; color: var(--lime); font-size: 22px; font-weight: 900; }
-    .hero-art { display: block; width: 100%; height: 260px; margin-top: 20px; }
-    .hero-art .wire { fill: none; stroke: #88ded0; stroke-width: 2; }
-    .hero-art .soft { fill: none; stroke: rgba(184,241,223,.26); stroke-width: 1; }
-    .hero-art .accent { fill: #d8f98c; }
-    .hero-art .glow { fill: rgba(184,241,223,.11); }
-
-    .proof-strip { position: relative; z-index: 2; margin-top: -1px; background: var(--white); border-bottom: 1px solid var(--line); }
-    .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-    .proof-item { min-height: 108px; display: flex; align-items: center; justify-content: center; gap: 13px; padding: 18px; border-right: 1px solid var(--line); }
-    .proof-item:last-child { border-right: 0; }
-    .proof-num { color: var(--teal); font-size: 27px; font-weight: 900; line-height: 1; white-space: nowrap; }
-    .proof-label { color: var(--muted); font-size: 12px; line-height: 1.45; }
-
-    section { padding-block: 94px; }
-    .section-head { max-width: 700px; margin-bottom: 40px; }
-    .section-kicker { margin-bottom: 10px; color: var(--teal); font-size: 12px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
-    .section-head h2 { margin-bottom: 14px; color: var(--navy); font-size: clamp(30px, 4vw, 44px); line-height: 1.25; letter-spacing: .02em; }
-    .section-head p { margin-bottom: 0; color: var(--muted); font-size: 16px; }
-    .focus { background: var(--paper); }
-    .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .focus-card { min-height: 238px; padding: 27px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); box-shadow: 0 7px 22px rgba(11,32,53,.035); }
-    .focus-icon { width: 48px; height: 48px; display: grid; place-items: center; margin-bottom: 24px; border-radius: 15px; background: #e4f6ef; color: var(--teal); }
-    .focus-icon svg { width: 24px; height: 24px; }
-    .focus-card h3 { margin-bottom: 9px; color: var(--navy); font-size: 19px; }
-    .focus-card p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
-    .card-tag { display: inline-block; margin-top: 17px; padding: 5px 10px; border-radius: 999px; background: #f1f6f4; color: #527078; font-size: 11px; font-weight: 800; }
-
-    .about { background: var(--white); }
-    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; align-items: start; gap: 66px; }
-    .about-aside { position: sticky; top: 110px; padding: 30px; border-radius: 26px; background: var(--navy); color: white; }
-    .about-aside .monogram { width: 68px; height: 68px; display: grid; place-items: center; margin-bottom: 22px; border: 1px solid rgba(184,241,223,.45); border-radius: 21px; background: rgba(184,241,223,.10); color: var(--mint); font-size: 31px; font-weight: 900; }
-    .about-aside h3 { margin-bottom: 5px; font-size: 23px; }
-    .about-aside p { margin-bottom: 23px; color: #b8cbd1; font-size: 13px; }
-    .about-aside .mini-label { color: var(--mint); font-size: 11px; font-weight: 900; letter-spacing: .13em; }
-    .about-main h2 { margin-bottom: 18px; color: var(--navy); font-size: clamp(30px, 4vw, 42px); line-height: 1.3; }
-    .about-main .lead { color: #415764; font-size: 17px; }
-    .about-main .body-copy { color: var(--muted); font-size: 15px; }
-    .education { margin-top: 30px; padding: 21px 23px; border-left: 3px solid var(--teal); border-radius: 0 16px 16px 0; background: #f3f8f5; }
-    .education small { display: block; margin-bottom: 5px; color: var(--teal); font-size: 11px; font-weight: 900; letter-spacing: .12em; }
-    .education strong { color: var(--navy); font-size: 16px; }
-    .experience { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 30px; }
-    .experience article { padding: 18px; border: 1px solid var(--line); border-radius: 17px; background: white; }
-    .experience strong { display: block; margin-bottom: 5px; color: var(--teal); font-size: 23px; line-height: 1.2; }
-    .experience span { color: var(--muted); font-size: 12px; }
-
-    .portfolio { background: #eaf2ef; }
-    .portfolio-top { display: flex; align-items: end; justify-content: space-between; gap: 24px; }
-    .learning-note { max-width: 260px; margin-bottom: 44px; padding: 12px 15px; border: 1px solid #cbdcd6; border-radius: 14px; background: rgba(255,255,255,.65); color: #50666c; font-size: 12px; }
-    .learning-note strong { display: block; margin-bottom: 3px; color: var(--teal); font-size: 13px; }
-    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-    .project-card { position: relative; overflow: hidden; min-height: 310px; padding: 28px; border: 1px solid rgba(16,38,56,.09); border-radius: 24px; background: white; box-shadow: 0 12px 32px rgba(11,32,53,.055); }
-    .project-card::after { content: ""; position: absolute; width: 180px; height: 180px; right: -70px; bottom: -86px; border: 1px solid rgba(24,122,120,.12); border-radius: 50%; box-shadow: 0 0 0 18px rgba(24,122,120,.035), 0 0 0 38px rgba(24,122,120,.025); }
-    .project-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 40px; }
-    .project-index { color: #8ca09e; font-size: 12px; font-weight: 900; letter-spacing: .1em; }
-    .status { padding: 5px 10px; border-radius: 999px; background: #fff4df; color: #8a642b; font-size: 11px; font-weight: 900; }
-    .project-card h3 { position: relative; z-index: 1; max-width: 440px; margin-bottom: 12px; color: var(--navy); font-size: 22px; }
-    .project-card p { position: relative; z-index: 1; max-width: 500px; margin-bottom: 0; color: var(--muted); font-size: 14px; }
-    .project-footer { position: absolute; right: 26px; bottom: 22px; z-index: 1; color: var(--teal); font-size: 11px; font-weight: 900; letter-spacing: .08em; }
-
-    .credentials { background: var(--white); }
-    .credentials-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
-    .credential { display: flex; align-items: center; gap: 12px; min-height: 81px; padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: #fbfdfb; }
-    .credential-mark { flex: 0 0 30px; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 10px; background: var(--navy); color: var(--mint); font-size: 13px; font-weight: 900; }
-    .credential span { color: #334d59; font-size: 13px; font-weight: 700; line-height: 1.45; }
-    .credential-note { margin-top: 19px; color: #7a8a90; font-size: 12px; }
-
-    .contact { position: relative; overflow: hidden; background: var(--navy); color: white; }
-    .contact::after { content: ""; position: absolute; width: 440px; height: 440px; right: -180px; bottom: -300px; border: 1px solid rgba(184,241,223,.15); border-radius: 50%; box-shadow: 0 0 0 35px rgba(184,241,223,.04), 0 0 0 75px rgba(184,241,223,.03); }
-    .contact-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
-    .contact .section-kicker { color: var(--mint); }
-    .contact h2 { max-width: 700px; margin-bottom: 13px; color: white; font-size: clamp(32px, 4.2vw, 48px); line-height: 1.25; }
-    .contact p { max-width: 610px; margin-bottom: 0; color: #c4d3d8; }
-    .email-button { flex: 0 0 auto; min-width: 205px; min-height: 56px; }
-    .footer { padding-block: 23px; background: #081a2b; color: #a6bbc2; font-size: 12px; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .footer a { color: var(--mint); text-decoration: none; }
-    .back-top { white-space: nowrap; }
-    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
-
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr .8fr; gap: 14px; }
-      .visual-card { min-height: 320px; padding: 20px; }
-      .hero-art { height: 220px; }
-      .about-grid { gap: 34px; }
-      .credentials-grid { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width:620px) {
+      .wrap { width:min(100% - 34px,560px); }
+      .nav { min-height:67px; }
+      .menu-toggle { display:inline-flex; }
+      .nav-links { position:absolute; top:67px; right:0; left:0; display:none; flex-direction:column; align-items:stretch; gap:0; padding:9px 17px 17px; background:var(--forest); border-top:1px solid rgba(255,255,255,.16); }
+      .nav-links.open { display:flex; }
+      .nav-links a { padding:10px 6px; }
+      .nav-cta { margin-top:7px; text-align:center; }
+      .hero-copy { min-height:475px; padding-top:53px; }
+      .hero h1 { font-size:clamp(66px,20vw,100px); }
+      .hero-photo { min-height:365px; }
+      .hero-stamp { width:88px; height:88px; font-size:14px; }
+      .topic-flow { min-height:61px; gap:14px; font-size:10px; }
+      .topic-flow b { font-size:16px; }
+      .intro,.story,.portfolio,.credentials,.contact { padding:77px 0; }
+      .work-notes { grid-template-columns:1fr; }
+      .note { min-height:116px; }
+      .note strong { margin-top:18px; }
+      .story-head { display:block; }
+      .story-head .section-copy { margin:18px 0 0; }
+      .journey { grid-template-columns:1fr; gap:31px; }
+      .journey-item { display:grid; grid-template-columns:74px 1fr; column-gap:17px; }
+      .journey-year,.journey h3,.journey p { grid-column:2; }
+      .journey-year { margin:4px 0; }
+      .journey h3 { margin:0; }
+      .journey p { max-width:none; margin-top:5px; }
+      .journey-dot { grid-row:span 3; }
+      .lab-card { min-height:280px; padding:24px; }
+      .credential { grid-template-columns:53px 1fr auto; min-height:76px; }
+      .credential-name { font-size:15px; }
+      .email-button { width:100%; }
+      .footer-inner { flex-direction:column; }
     }
-    @media (max-width: 700px) {
-      .wrap { width: min(100% - 36px, 560px); }
-      .nav { min-height: 68px; }
-      .menu-toggle { display: inline-flex; }
-      .nav-links { position: absolute; top: 68px; left: 0; right: 0; display: none; align-items: stretch; gap: 0; padding: 8px 18px 16px; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,.1); }
-      .nav-links.open { display: flex; flex-direction: column; }
-      .nav-links a { padding: 12px 8px; }
-      .nav-links .nav-cta { margin-top: 7px; text-align: center; }
-      .hero-grid { min-height: auto; grid-template-columns: 1fr; padding-block: 58px 38px; }
-      .hero-copy { font-size: 15px; }
-      .hero-visual { min-height: auto; margin-top: 16px; }
-      .visual-card { max-width: 450px; min-height: 300px; }
-      .hero-art { height: 205px; }
-      .proof-grid { grid-template-columns: repeat(2, 1fr); }
-      .proof-item { min-height: 82px; justify-content: flex-start; padding: 14px 9px; border-bottom: 1px solid var(--line); }
-      .proof-item:nth-child(2) { border-right: 0; }
-      .proof-item:nth-child(3), .proof-item:nth-child(4) { border-bottom: 0; }
-      .proof-num { font-size: 21px; }
-      .proof-label { font-size: 11px; }
-      section { padding-block: 68px; }
-      .focus-grid, .project-grid { grid-template-columns: 1fr; }
-      .focus-card { min-height: 0; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-aside { position: static; }
-      .experience { grid-template-columns: 1fr; }
-      .experience article { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
-      .experience strong { margin: 0; font-size: 20px; }
-      .experience span { text-align: right; }
-      .portfolio-top { display: block; }
-      .learning-note { margin: -18px 0 25px; }
-      .project-card { min-height: 270px; }
-      .credentials-grid { grid-template-columns: 1fr; }
-      .credential { min-height: 70px; }
-      .contact-inner { align-items: flex-start; flex-direction: column; }
-      .email-button { width: 100%; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
-    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition-duration:.01ms !important; animation-duration:.01ms !important; } }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="wrap nav">
-      <a class="brand" href="#home" aria-label="林良亘首頁">
-        <span class="brand-mark" aria-hidden="true">林</span>
-        <span>林良亘<small>水電專業・AI 實作</small></span>
-      </a>
+      <a class="brand" href="#home" aria-label="林良亘首頁"><span class="brand-mark">林</span><span>林良亘<small>FIELD NOTES / AI LEARNING</small></span></a>
       <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks">選單</button>
       <nav class="nav-links" id="navLinks" aria-label="主要導覽">
-        <a href="#about">關於我</a>
-        <a href="#portfolio">AI 作品集</a>
-        <a href="#credentials">經歷與證照</a>
-        <a class="nav-cta" href="#contact">聯絡合作</a>
+        <a href="#about">關於我</a><a href="#journey">經歷</a><a href="#portfolio">AI 作品集</a><a href="#credentials">證照</a><a class="nav-cta" href="#contact">聯絡合作</a>
       </nav>
     </div>
   </header>
-
   <main>
     <section class="hero" id="home" aria-labelledby="heroTitle">
       <div class="wrap hero-grid">
-        <div>
-          <p class="eyebrow">水電專業・家庭網路・AI 應用</p>
-          <h1 id="heroTitle">林良亘<span>讓現場專業，接上數位新可能。</span></h1>
-          <p class="hero-copy">我以水電與電腦通訊背景為基礎，持續學習 AI 相關軟體，探索它在家庭水電裝設與家庭網路建置中的實用方式。</p>
-          <div class="actions">
-            <a class="button button-primary" href="#contact">洽談合作 <span aria-hidden="true">↗</span></a>
-            <a class="button button-quiet" href="#portfolio">看看 AI 實作方向</a>
-          </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Water · Network · AI Learning</p>
+          <h1 id="heroTitle">林良亘<span>水電專業・AI 學習中</span></h1>
+          <p class="hero-intro">以水電與電腦通訊背景為基礎，持續累積家庭水電、家庭網路建置與 AI 工具的實務應用。</p>
+          <div class="hero-actions"><a class="button button-primary" href="#contact">一起聊合作 <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="#about">認識我</a></div>
         </div>
-        <div class="hero-visual" aria-label="水電與家庭網路主題插圖">
-          <div class="visual-card">
-            <span class="visual-label">FIELD EXPERIENCE / DIGITAL LEARNING</span>
-            <svg class="hero-art" viewBox="0 0 500 270" role="img" aria-label="以房屋、電路和網路節點呈現專業領域">
-              <circle class="glow" cx="255" cy="133" r="102" />
-              <circle class="soft" cx="255" cy="133" r="122" />
-              <circle class="soft" cx="255" cy="133" r="145" />
-              <path class="wire" d="M131 138 250 54l119 84v72H131z" />
-              <path class="wire" d="M213 210v-57h75v57M251 153v-35h38" />
-              <path class="wire" d="M251 118h-29v-22m67 57h37v-26m-113 46h-49v-29" />
-              <path class="soft" d="M106 221h290M156 234h198" />
-              <circle class="accent" cx="222" cy="96" r="5" />
-              <circle class="accent" cx="326" cy="144" r="5" />
-              <circle class="accent" cx="179" cy="173" r="5" />
-              <circle class="accent" cx="251" cy="118" r="5" />
-              <circle class="glow" cx="222" cy="96" r="14" />
-              <circle class="glow" cx="326" cy="144" r="14" />
-              <circle class="glow" cx="179" cy="173" r="14" />
-            </svg>
-            <div class="visual-name"><strong>專業經驗 × 持續學習</strong><span>HOME SYSTEMS / CONNECTIVITY</span></div>
-            <span class="visual-seal" aria-hidden="true">電</span>
+        <div class="hero-photo">
+          <span class="hero-stamp">FIELD<br>NOTES<small>NO. 001</small></span>
+          <img src="assets/home-electrical-field-note.png" alt="居家水電工作情境示意：技術人員在明亮住家進行插座作業">
+          <span class="photo-note">情境圖片・非本人</span>
+        </div>
+      </div>
+    </section>
+    <section class="topic-ribbon" aria-label="專業主題"><div class="wrap topic-flow"><span>家庭水電裝設</span><b>✦</b><span>家庭網路建置</span><b>✦</b><span>AI 工具學習</span><b>✦</b><span>現場實務經驗</span></div></section>
+    <section class="intro" id="about" aria-labelledby="aboutTitle">
+      <div class="wrap intro-grid">
+        <div class="intro-label reveal">
+          <p class="eyebrow">About me</p><h2 class="section-title" id="aboutTitle">把每一次現場經驗，變成下一步的能力。</h2><p class="mini-name">林良亘・水電專業人員</p>
+        </div>
+        <div class="reveal">
+          <div class="intro-text"><p>我從<span class="script">電腦通訊工程</span>出發，經過軍中、廠務與弱電工程的現場歷練；現在持續投入水電專業，也把 <mark>AI 新工具</mark>學進日常工作。</p></div>
+          <p class="intro-detail">我希望讓既有的水電與通訊背景，延伸到家庭網路建置、資訊整理與更清楚的工作說明。這個網站記錄我的專業軌跡，也持續更新正在學習與完成的實作。</p>
+          <div class="work-notes" aria-label="我的專業重點">
+            <article class="note"><span class="note-number">01 / WORK</span><strong>家庭水電裝設</strong><small>現場工作與實務累積</small></article>
+            <article class="note"><span class="note-number">02 / CONNECT</span><strong>家庭網路建置</strong><small>通訊背景延伸學習</small></article>
+            <article class="note"><span class="note-number">03 / LEARN</span><strong>AI 工具應用</strong><small>探索實務工作的新方法</small></article>
           </div>
         </div>
       </div>
     </section>
-
-    <div class="proof-strip" aria-label="經驗摘要">
-      <div class="wrap proof-grid">
-        <div class="proof-item"><span class="proof-num">10 年</span><span class="proof-label">軍中服務<br>經驗</span></div>
-        <div class="proof-item"><span class="proof-num">1 年</span><span class="proof-label">工廠廠務<br>經驗</span></div>
-        <div class="proof-item"><span class="proof-num">3 個月</span><span class="proof-label">弱電工程<br>經驗</span></div>
-        <div class="proof-item"><span class="proof-num">7 項</span><span class="proof-label">技術與職能<br>資格</span></div>
-      </div>
-    </div>
-
-    <section class="focus" aria-labelledby="focusTitle">
+    <section class="story" id="journey" aria-labelledby="journeyTitle">
       <div class="wrap">
-        <div class="section-head">
-          <p class="section-kicker">What I Do</p>
-          <h2 id="focusTitle">我的專業與學習方向</h2>
-          <p>以水電實務為核心，結合通訊背景，持續把新工具帶進實際問題的整理與解決。</p>
-        </div>
-        <div class="focus-grid">
-          <article class="focus-card">
-            <div class="focus-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3v5a4 4 0 0 0 8 0V3M12 12v9m-5-3h10"/><path d="M6 3h4m4 0h4"/></svg></div>
-            <h3>家庭水電裝設</h3>
-            <p>以水電專業經驗為主軸，持續整理工作方法與實務知識。</p>
-            <span class="card-tag">專業領域</span>
-          </article>
-          <article class="focus-card">
-            <div class="focus-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8m-4-3v3M7 10h.01M11 10h.01M15 10h.01M7 14h.01M11 14h.01M15 14h.01"/></svg></div>
-            <h3>家庭網路建置與部署</h3>
-            <p>結合電腦通訊工程背景，延伸學習家庭網路規劃與建置。</p>
-            <span class="card-tag">通訊與網路</span>
-          </article>
-          <article class="focus-card">
-            <div class="focus-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48 2.12 2.12m0-12.72-2.12 2.12m-8.48 8.48-2.12 2.12"/><circle cx="12" cy="12" r="4"/></svg></div>
-            <h3>AI 工具應用學習</h3>
-            <p>持續學習 AI 相關軟體，探索工具與現場工作、資訊整理的結合方式。</p>
-            <span class="card-tag">持續學習中</span>
-          </article>
+        <div class="story-head reveal"><div><p class="eyebrow">My journey</p><h2 class="section-title" id="journeyTitle">從不同現場，累積能帶著走的專業。</h2></div><p class="section-copy">每一段經驗都讓我更了解現場、設備、系統與責任感的重要性。</p></div>
+        <div class="journey">
+          <article class="journey-item reveal"><span class="journey-dot">01</span><p class="journey-year">10 YEARS</p><h3>軍中服務</h3><p>十年服務經驗，建立紀律、執行力與團隊協作基礎。</p></article>
+          <article class="journey-item reveal"><span class="journey-dot">02</span><p class="journey-year">1 YEAR</p><h3>工廠廠務</h3><p>接觸設備與廠務環境，累積系統維護的觀念。</p></article>
+          <article class="journey-item reveal"><span class="journey-dot">03</span><p class="journey-year">3 MONTHS</p><h3>弱電工程</h3><p>延續通訊背景，接觸弱電工程現場與施工流程。</p></article>
+          <article class="journey-item reveal"><span class="journey-dot">04</span><p class="journey-year">NOW</p><h3>水電 × AI 學習</h3><p>持續投入水電專業，同時學習 AI 軟體與家庭網路建置。</p></article>
         </div>
       </div>
     </section>
-
-    <section class="about" id="about" aria-labelledby="aboutTitle">
-      <div class="wrap about-grid">
-        <aside class="about-aside">
-          <div class="monogram" aria-hidden="true">林</div>
-          <h3>林良亘</h3>
-          <p>水電專業人員<br>電腦通訊工程背景</p>
-          <span class="mini-label">ABOUT ME</span>
-        </aside>
-        <div class="about-main">
-          <p class="section-kicker">About Me</p>
-          <h2 id="aboutTitle">從通訊工程出發，累積多元現場經驗。</h2>
-          <p class="lead">我叫林良亘，畢業於陸軍專科學校電腦通訊工程科，目前從事水電相關工作。</p>
-          <p class="body-copy">我的經歷包含軍中服務、弱電工程與工廠廠務。現在除了持續投入水電專業，也在學習 AI 相關軟體，希望把既有的水電與通訊背景，延伸到家庭網路建置及 AI 工具的實務應用。</p>
-          <div class="education">
-            <small>學歷與課程經歷</small>
-            <strong>陸軍專科學校｜電腦通訊工程科</strong>
-          </div>
-          <div class="experience" aria-label="工作經歷摘要">
-            <article><strong>10 年</strong><span>軍中服務</span></article>
-            <article><strong>3 個月</strong><span>弱電工程</span></article>
-            <article><strong>1 年</strong><span>工廠廠務</span></article>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="portfolio" id="portfolio" aria-labelledby="portfolioTitle">
       <div class="wrap">
-        <div class="portfolio-top">
-          <div class="section-head">
-            <p class="section-kicker">AI Portfolio / Case Studies</p>
-            <h2 id="portfolioTitle">AI 作品集與案例展示</h2>
-            <p>目前持續學習 AI 相關軟體。以下先整理實作方向；完成具體案例後，會補上使用工具、流程與成果。</p>
-          </div>
-          <div class="learning-note"><strong>學習與實作持續累積</strong>清楚區分規劃方向與已完成作品。</div>
-        </div>
-        <div class="project-grid">
-          <article class="project-card">
-            <div class="project-meta"><span class="project-index">DIRECTION 01</span><span class="status">實作方向</span></div>
-            <h3>AI × 家庭水電裝設</h3>
-            <p>探索如何運用 AI 工具整理家庭水電需求、工作資訊與說明內容。實際使用的工具與完成成果將於案例完成後補充。</p>
-            <span class="project-footer">HOME ELECTRICAL</span>
-          </article>
-          <article class="project-card">
-            <div class="project-meta"><span class="project-index">DIRECTION 02</span><span class="status">實作方向</span></div>
-            <h3>AI × 家庭網路建置</h3>
-            <p>結合電腦通訊背景，探索 AI 軟體在家庭網路規劃、建置紀錄與資訊整理上的應用可能。</p>
-            <span class="project-footer">HOME NETWORK</span>
-          </article>
+        <div class="reveal"><p class="eyebrow">AI learning notebook</p><h2 class="section-title" id="portfolioTitle">AI 作品集，從真實問題開始練習。</h2><p class="section-copy">目前正在累積案例。以下清楚標示為實作方向，完成後會補上工具、流程與成果，不把規劃當成已完成作品。</p></div>
+        <div class="portfolio-grid">
+          <article class="lab-card reveal"><span class="card-status">IN PROGRESS</span><h3>AI × 家庭水電裝設</h3><p>探索 AI 工具如何協助整理家庭水電需求、工作資訊與易懂的說明內容。</p><div class="lab-steps"><span><b>01</b> 需求整理</span><span><b>02</b> 資訊說明</span><span><b>03</b> 實作紀錄</span></div><span class="arrow" aria-hidden="true">↗</span></article>
+          <article class="lab-card reveal"><span class="card-status">IN PROGRESS</span><h3>AI × 家庭網路建置</h3><p>結合電腦通訊背景，探索家庭網路規劃、建置紀錄與資訊整理上的應用可能。</p><div class="lab-steps"><span><b>01</b> 網路規劃</span><span><b>02</b> 建置筆記</span><span><b>03</b> 知識整理</span></div><span class="arrow" aria-hidden="true">↗</span></article>
         </div>
       </div>
     </section>
-
     <section class="credentials" id="credentials" aria-labelledby="credentialsTitle">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="section-kicker">Qualifications</p>
-          <h2 id="credentialsTitle">專業證照與技術資格</h2>
-          <p>以水電、通訊、網路與設備相關資格，呈現我的專業訓練與學習歷程。</p>
+      <div class="wrap credentials-layout">
+        <div class="credentials-side reveal"><p class="eyebrow">Qualifications</p><h2 class="section-title" id="credentialsTitle">證照是訓練的紀錄，也是持續精進的起點。</h2><p class="section-copy">水電、通訊、網路與設備相關技術資格。</p></div>
+        <div class="reveal">
+          <div class="credentials-list">
+            <div class="credential"><span class="credential-no">01</span><span class="credential-name">室內配線乙</span><span class="credential-mark">↗</span></div>
+            <div class="credential"><span class="credential-no">02</span><span class="credential-name">自來水配管乙</span><span class="credential-mark">↗</span></div>
+            <div class="credential"><span class="credential-no">03</span><span class="credential-name">通信技術乙</span><span class="credential-mark">↗</span></div>
+            <div class="credential"><span class="credential-no">04</span><span class="credential-name">硬體裝修乙</span><span class="credential-mark">↗</span></div>
+            <div class="credential"><span class="credential-no">05</span><span class="credential-name">網路架設丙</span><span class="credential-mark">↗</span></div>
+            <div class="credential"><span class="credential-no">06</span><span class="credential-name">高空作業車</span><span class="credential-mark">↗</span></div>
+            <div class="credential"><span class="credential-no">07</span><span class="credential-name">智慧生產製造初級</span><span class="credential-mark">↗</span></div>
+          </div>
+          <p class="credential-note">證照名稱依目前提供資料整理；正式公開時可依證書內容補上完整名稱與圖片。</p>
         </div>
-        <div class="credentials-grid">
-          <div class="credential"><span class="credential-mark">01</span><span>室內配線乙</span></div>
-          <div class="credential"><span class="credential-mark">02</span><span>自來水配管乙</span></div>
-          <div class="credential"><span class="credential-mark">03</span><span>通信技術乙</span></div>
-          <div class="credential"><span class="credential-mark">04</span><span>硬體裝修乙</span></div>
-          <div class="credential"><span class="credential-mark">05</span><span>網路架設丙</span></div>
-          <div class="credential"><span class="credential-mark">06</span><span>高空作業車</span></div>
-          <div class="credential"><span class="credential-mark">07</span><span>智慧生產製造初級</span></div>
-        </div>
-        <p class="credential-note">證照名稱依目前提供的資料整理；正式名稱可再依證書內容調整。</p>
       </div>
     </section>
-
     <section class="contact" id="contact" aria-labelledby="contactTitle">
-      <div class="wrap contact-inner">
-        <div>
-          <p class="section-kicker">Contact & Collaboration</p>
-          <h2 id="contactTitle">有合作想法，歡迎來信聊聊。</h2>
-          <p>歡迎洽談家庭水電、家庭網路建置、技術交流，或 AI 工具與實務應用相關合作。</p>
-        </div>
-        <a class="button button-primary email-button" href="mailto:ex3894925@gmail.com">Email 林良亘 <span aria-hidden="true">↗</span></a>
-      </div>
+      <div class="wrap contact-inner"><div class="reveal"><p class="eyebrow">Contact & collaboration</p><h2 class="section-title" id="contactTitle">有合作想法，<br>歡迎來信聊聊。</h2><p>歡迎洽談家庭水電、家庭網路建置、技術交流，或 AI 工具與實務應用相關合作。</p></div><a class="button email-button" href="mailto:ex3894925@gmail.com">Email 林良亘 <span aria-hidden="true">↗</span></a></div>
     </section>
   </main>
-
-  <footer class="footer">
-    <div class="wrap footer-inner">
-      <span>© 2026 林良亘｜水電專業 × AI 應用</span>
-      <a class="back-top" href="#home">回到頁首 ↑</a>
-    </div>
-  </footer>
-
+  <footer class="footer"><div class="wrap footer-inner"><span>© 2026 林良亘｜水電專業・AI 學習中</span><a href="#home">回到頁首 ↑</a></div></footer>
   <script>
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
-    menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-    });
-    navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-      });
-    });
+    const menuToggle=document.getElementById("menuToggle");const navLinks=document.getElementById("navLinks");
+    menuToggle.addEventListener("click",()=>{const open=navLinks.classList.toggle("open");menuToggle.setAttribute("aria-expanded",String(open));});
+    navLinks.querySelectorAll("a").forEach((link)=>link.addEventListener("click",()=>{navLinks.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");}));
+    const observer=new IntersectionObserver((entries)=>entries.forEach((entry)=>{if(entry.isIntersecting)entry.target.classList.add("is-visible");}),{threshold:.12});
+    document.querySelectorAll(".reveal").forEach((element)=>observer.observe(element));
   </script>
 </body>
 </html>
