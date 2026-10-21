@@ -118,12 +118,28 @@
 
     .contact { position:relative; overflow:hidden; padding:112px 0; background:var(--rust); color:white; }
     .contact::before { position:absolute; right:-120px; top:-130px; width:390px; height:390px; border:1px solid rgba(255,255,255,.34); border-radius:50%; box-shadow:0 0 0 35px rgba(255,255,255,.09),0 0 0 92px rgba(255,255,255,.055); content:""; }
-    .contact-inner { position:relative; z-index:1; display:flex; justify-content:space-between; gap:60px; align-items:end; }
+    .contact-inner { position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr); gap:60px; align-items:start; }
     .contact .eyebrow { color:#ffe8d8; }
     .contact .section-title { max-width:720px; color:white; font-size:clamp(48px,6.5vw,80px); }
-    .contact p { max-width:590px; margin:19px 0 0; color:#ffeadf; }
-    .email-button { flex:0 0 auto; min-width:217px; background:var(--forest); color:white; box-shadow:5px 5px 0 var(--lime); }
+    .contact-intro p:not(.eyebrow) { max-width:590px; margin:19px 0 0; color:#ffeadf; }
+    .email-button { margin-top:28px; min-width:217px; background:var(--forest); color:white; box-shadow:5px 5px 0 var(--lime); }
     .email-button:hover { background:#304d3d; }
+    .booking-card { padding:clamp(24px,3vw,38px); background:var(--paper); color:var(--ink); box-shadow:12px 12px 0 rgba(32,59,48,.23); }
+    .booking-card h3 { margin:0; font-family:var(--serif); font-size:clamp(27px,3vw,38px); line-height:1.2; letter-spacing:-.04em; }
+    .booking-card .booking-note { margin:10px 0 25px; color:#5b685f; font-size:13px; }
+    .form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:17px 14px; }
+    .form-field { display:flex; flex-direction:column; gap:6px; min-width:0; font-size:13px; font-weight:800; }
+    .form-field-full { grid-column:1/-1; }
+    .form-field input,.form-field select,.form-field textarea { width:100%; min-height:44px; padding:10px 12px; border:1px solid #b7c2b8; border-radius:3px; background:#fffdfa; color:var(--ink); font:400 15px var(--sans); }
+    .form-field textarea { min-height:92px; resize:vertical; }
+    .form-field input:focus,.form-field select:focus,.form-field textarea:focus { border-color:var(--forest); outline:2px solid var(--lime); outline-offset:1px; }
+    .booking-consent { display:flex; align-items:flex-start; gap:9px; margin-top:18px; color:#4f5b52; font-size:12px; line-height:1.5; }
+    .booking-consent input { width:17px; height:17px; flex:0 0 17px; margin:1px 0 0; accent-color:var(--forest); }
+    .booking-submit { width:100%; margin-top:22px; border:0; background:var(--forest); color:white; font-family:var(--sans); cursor:pointer; }
+    .booking-submit:disabled { opacity:.7; cursor:wait; transform:none; }
+    .form-status { min-height:1.7em; margin:12px 0 0; color:var(--forest); font-size:13px; font-weight:800; }
+    .form-status[data-state="error"] { color:#a43c27; }
+    .form-trap { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
     .footer { padding:22px 0; background:#182b23; color:#c6d1c9; font-size:12px; }
     .footer-inner { display:flex; justify-content:space-between; gap:20px; }
     .footer a { color:var(--lime); text-decoration:none; }
@@ -139,7 +155,7 @@
       .journey { grid-template-columns:1fr 1fr; gap:38px 20px; }
       .journey::before { display:none; }
       .portfolio-grid { grid-template-columns:1fr; }
-      .contact-inner { align-items:flex-start; flex-direction:column; }
+      .contact-inner { grid-template-columns:1fr; gap:42px; }
     }
     @media (max-width:620px) {
       .wrap { width:min(100% - 34px,560px); }
@@ -172,6 +188,7 @@
       .credential { grid-template-columns:53px 1fr auto; min-height:76px; }
       .credential-name { font-size:15px; }
       .email-button { width:100%; }
+      .form-grid { grid-template-columns:1fr; }
       .footer-inner { flex-direction:column; }
     }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition-duration:.01ms !important; animation-duration:.01ms !important; } }
@@ -183,7 +200,7 @@
       <a class="brand" href="#home" aria-label="林良亘首頁"><span class="brand-mark">林</span><span>林良亘<small>FIELD NOTES / AI LEARNING</small></span></a>
       <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks">選單</button>
       <nav class="nav-links" id="navLinks" aria-label="主要導覽">
-        <a href="#about">關於我</a><a href="#journey">經歷</a><a href="#portfolio">AI 作品集</a><a href="#credentials">證照</a><a class="nav-cta" href="#contact">聯絡合作</a>
+        <a href="#about">關於我</a><a href="#journey">經歷</a><a href="#portfolio">AI 作品集</a><a href="#credentials">證照</a><a class="nav-cta" href="#contact">預約服務</a>
       </nav>
     </div>
   </header>
@@ -194,7 +211,7 @@
           <p class="eyebrow">Water · Network · AI Learning</p>
           <h1 id="heroTitle">林良亘<span>水電專業・AI 學習中</span></h1>
           <p class="hero-intro">以水電與電腦通訊背景為基礎，持續累積家庭水電、家庭網路建置與 AI 工具的實務應用。</p>
-          <div class="hero-actions"><a class="button button-primary" href="#contact">一起聊合作 <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="#about">認識我</a></div>
+          <div class="hero-actions"><a class="button button-primary" href="#contact">預約服務 <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="#about">認識我</a></div>
         </div>
         <div class="hero-photo">
           <span class="hero-stamp">FIELD<br>NOTES<small>NO. 001</small></span>
@@ -258,7 +275,33 @@
       </div>
     </section>
     <section class="contact" id="contact" aria-labelledby="contactTitle">
-      <div class="wrap contact-inner"><div class="reveal"><p class="eyebrow">Contact & collaboration</p><h2 class="section-title" id="contactTitle">有合作想法，<br>歡迎來信聊聊。</h2><p>歡迎洽談家庭水電、家庭網路建置、技術交流，或 AI 工具與實務應用相關合作。</p></div><a class="button email-button" href="mailto:ex3894925@gmail.com">Email 林良亘 <span aria-hidden="true">↗</span></a></div>
+      <div class="wrap contact-inner">
+        <div class="contact-intro reveal">
+          <p class="eyebrow">Booking & collaboration</p>
+          <h2 class="section-title" id="contactTitle">有服務需求，<br>先留下預約。</h2>
+          <p>家庭水電、家庭網路建置或其他合作需求，都可以先填表。我會再聯絡你確認細節與時間。</p>
+          <a class="button email-button" href="mailto:ex3894925@gmail.com">改用 Email 聯絡 <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="booking-card reveal">
+          <h3 id="bookingTitle">預約需求表單</h3>
+          <p class="booking-note">請填寫聯絡方式與希望日期；送出後仍需聯絡確認，才算完成預約。標示 * 的欄位必填。</p>
+          <form id="bookingForm" aria-labelledby="bookingTitle">
+            <div class="form-grid">
+              <label class="form-field">姓名 *<input name="customer_name" type="text" autocomplete="name" required maxlength="80"></label>
+              <label class="form-field">聯絡電話 *<input name="phone" type="tel" inputmode="tel" autocomplete="tel" required minlength="6" maxlength="30"></label>
+              <label class="form-field">服務項目 *<select name="service_type" required><option value="">請選擇</option><option value="家庭水電">家庭水電</option><option value="家庭網路">家庭網路</option><option value="其他合作">其他合作</option></select></label>
+              <label class="form-field">希望日期 *<input name="preferred_date" id="preferredDate" type="date" required></label>
+              <label class="form-field">方便聯絡時段 *<select name="preferred_time" required><option value="">請選擇</option><option value="上午">上午</option><option value="下午">下午</option><option value="晚上">晚上</option><option value="時間可再討論">時間可再討論</option></select></label>
+              <label class="form-field">服務地區<input name="area" type="text" maxlength="80" placeholder="例：新北市板橋區"></label>
+              <label class="form-field form-field-full">需求說明<textarea name="details" maxlength="1000" placeholder="簡述需要協助的事項"></textarea></label>
+            </div>
+            <label class="booking-consent"><input name="consent" type="checkbox" required><span>我同意提供以上資料，僅供回覆這次預約需求使用；資料不會公開顯示。</span></label>
+            <div class="form-trap" aria-hidden="true"><label>網站地址<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+            <button class="button booking-submit" id="bookingSubmit" type="submit">送出預約需求 <span aria-hidden="true">↗</span></button>
+            <p class="form-status" id="bookingStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
     </section>
   </main>
   <footer class="footer"><div class="wrap footer-inner"><span>© 2026 林良亘｜水電專業・AI 學習中</span><a href="#home">回到頁首 ↑</a></div></footer>
@@ -268,6 +311,55 @@
     navLinks.querySelectorAll("a").forEach((link)=>link.addEventListener("click",()=>{navLinks.classList.remove("open");menuToggle.setAttribute("aria-expanded","false");}));
     const observer=new IntersectionObserver((entries)=>entries.forEach((entry)=>{if(entry.isIntersecting)entry.target.classList.add("is-visible");}),{threshold:.12});
     document.querySelectorAll(".reveal").forEach((element)=>observer.observe(element));
+    const bookingForm=document.getElementById("bookingForm");
+    const bookingSubmit=document.getElementById("bookingSubmit");
+    const bookingStatus=document.getElementById("bookingStatus");
+    const preferredDate=document.getElementById("preferredDate");
+    const supabaseUrl="https://nrvjxlqtbhwpbzyxdhoh.supabase.co";
+    const supabasePublishableKey="sb_publishable_WLIKCLulUhcxF5zF-D6e5g_bNkmo643";
+    const localToday=()=>{const date=new Date();return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,"0")}-${String(date.getDate()).padStart(2,"0")}`;};
+    preferredDate.min=localToday();
+    bookingForm.addEventListener("submit",async(event)=>{
+      event.preventDefault();
+      bookingStatus.textContent="";
+      bookingStatus.dataset.state="";
+      const formData=new FormData(bookingForm);
+      if(formData.get("website")) return;
+      const booking={
+        customer_name:String(formData.get("customer_name")||"").trim(),
+        phone:String(formData.get("phone")||"").trim(),
+        service_type:String(formData.get("service_type")||""),
+        preferred_date:String(formData.get("preferred_date")||""),
+        preferred_time:String(formData.get("preferred_time")||""),
+        area:String(formData.get("area")||"").trim()||null,
+        details:String(formData.get("details")||"").trim()||null
+      };
+      if(!booking.customer_name||booking.phone.length<6||booking.preferred_date<localToday()){
+        bookingStatus.dataset.state="error";
+        bookingStatus.textContent="請確認姓名、電話及希望日期後再送出。";
+        return;
+      }
+      bookingSubmit.disabled=true;
+      bookingSubmit.textContent="送出中…";
+      try{
+        const response=await fetch(`${supabaseUrl}/rest/v1/booking_requests`,{
+          method:"POST",
+          headers:{"apikey":supabasePublishableKey,"Authorization":`Bearer ${supabasePublishableKey}`,"Content-Type":"application/json","Prefer":"return=minimal"},
+          body:JSON.stringify(booking)
+        });
+        if(!response.ok) throw new Error(`Booking request failed: ${response.status}`);
+        bookingForm.reset();
+        preferredDate.min=localToday();
+        bookingStatus.textContent="已收到預約需求。我會再聯絡你確認細節與時間。";
+      }catch(error){
+        console.error(error);
+        bookingStatus.dataset.state="error";
+        bookingStatus.textContent="送出失敗，請稍後再試，或改用 Email 聯絡。";
+      }finally{
+        bookingSubmit.disabled=false;
+        bookingSubmit.innerHTML='送出預約需求 <span aria-hidden="true">↗</span>';
+      }
+    });
   </script>
 </body>
 </html>
